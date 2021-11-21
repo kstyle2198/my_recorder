@@ -27,7 +27,7 @@ while True:
                 "C:/my_develop2/meeting_record/records/{}".format(저장파일명),
                 header=False,
                 index=False,
-                encoding="euc-kr'",
+                encoding="euc-kr",
             )
             print("부분 녹음 종료")
         except:
