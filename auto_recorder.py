@@ -5,7 +5,7 @@ import pandas as pd
 # 사용할 언어와 저장할 파일명을 정해주세요.     한국어 ko-KR    일본어 ja-JP    중국어(북경어) zh   영어   en-US
 
 사용언어 = "ko-KR"
-저장파일명 = "meeting_2021124.csv"
+저장파일명 = "meeting(자동).csv"
 list1 = []
 
 while True:
@@ -34,4 +34,3 @@ while True:
             print("뭔소리고????")
 
 
-# git push -u origin main
