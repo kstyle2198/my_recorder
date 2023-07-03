@@ -2,6 +2,8 @@ import streamlit as st
 import speech_recognition as sr
 import pandas as pd
 from streamlit_webrtc import webrtc_streamer
+import av
+import cv2
 
 def main(언어, is_pushed=False):
     list1 = []
@@ -20,6 +22,13 @@ def main(언어, is_pushed=False):
                     print("뭔소리고????")
         else:
             pass
+        
+def callback(frame):
+    img = frame.to_ndarray(format="bgr24")
+
+    img = cv2.cvtColor(cv2.Canny(img, 100, 200), cv2.COLOR_GRAY2BGR)
+
+    return av.VideoFrame.from_ndarray(img, format="bgr24")
 
 if __name__ == "__main__":
     
@@ -33,8 +42,8 @@ if __name__ == "__main__":
     
     webrtc_streamer(
          key="speech-to-text",
-        # video_frame_callback=callback,
-        # rtc_configuration={"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
+        video_frame_callback=callback,
+        rtc_configuration={"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]}
         )
     
     if st.button('녹음시작'):
